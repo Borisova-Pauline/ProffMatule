@@ -20,7 +20,10 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.DropdownMenu
+import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
@@ -171,30 +174,125 @@ fun EnterRegistrated(navController: NavController){
                 Text(text="Войдите, чтобы пользоваться функциями приложения", fontSize=15.sp)
             }
             Column(modifier=Modifier.padding(horizontal = 20.dp).padding(top=262.dp-innerPadding.calculateTopPadding())){
-                Text(text="Вход по E-mail", color= Description)
+                Text(text="Вход по E-mail", color= Description, fontSize = 14.sp)
                 SimpleInput(email.value, {newText->email.value=newText}, "example@mail.com")
-                Spacer(modifier=Modifier.height(10.dp))
-                Text(text="Пароль", color= Description)
+                Spacer(modifier=Modifier.height(15.dp))
+                Text(text="Пароль", color= Description, fontSize = 14.sp)
                 PasswordInput(password.value, {newText->password.value=newText}, "", R.drawable.hide_password, R.drawable.show_password)
-                Spacer(modifier=Modifier.height(10.dp))
+                Spacer(modifier=Modifier.height(15.dp))
                 if(email.value==""||password.value==""){
                     BlueButton("Далее", {Toast.makeText(context, "Вы не ввели данные", Toast.LENGTH_LONG).show()},
                         AccentInactive, modifier=Modifier.height(56.dp).fillMaxWidth())
                 }else{
-                    BlueButton("Далее", {Toast.makeText(context, "Вход", Toast.LENGTH_LONG).show()},
-                        Accent, modifier=Modifier.height(56.dp).fillMaxWidth())
+                    BlueButton("Далее", {
+                        if(isThisOnEmail(email.value)){
+                            Toast.makeText(context, "Вход", Toast.LENGTH_LONG).show()
+                        }else{
+                            Toast.makeText(context, "Проверьте правильность почты", Toast.LENGTH_LONG).show()
+                        }}, Accent, modifier=Modifier.height(56.dp).fillMaxWidth())
                 }
-                Spacer(modifier=Modifier.height(10.dp))
+                Spacer(modifier=Modifier.height(15.dp))
                 Text(text="Зарегистрироваться", fontSize = 15.sp, color=Accent, textAlign = TextAlign.Center,
-                    modifier=Modifier.fillMaxWidth())
+                    modifier=Modifier.fillMaxWidth().clickable { navController.navigate("createProfile") })
             }
-            Column(modifier=Modifier.padding(horizontal = 20.dp).padding(top=584.dp-innerPadding.calculateTopPadding())){
+            Column(modifier=Modifier.padding(horizontal = 20.dp).padding(bottom=60.dp).align(Alignment.BottomCenter)){
                 Text(text="Или войдите с помощью", fontSize = 15.sp, color= Caption, textAlign = TextAlign.Center,
                     modifier=Modifier.fillMaxWidth())
-                Spacer(modifier=Modifier.height(12.dp))
+                Spacer(modifier=Modifier.height(15.dp))
                 ButtonEnterWith(modifier=Modifier.height(56.dp).fillMaxWidth(), {Toast.makeText(context, "Вход через ВК", Toast.LENGTH_LONG).show()}, R.drawable.vk_logo, "Войти с VK")
-                Spacer(modifier=Modifier.height(12.dp))
+                Spacer(modifier=Modifier.height(15.dp))
                 ButtonEnterWith(modifier=Modifier.height(56.dp).fillMaxWidth(), {Toast.makeText(context, "Вход через Яндекс", Toast.LENGTH_LONG).show()}, R.drawable.yandex_logo, "Войти с Yandex")
+            }
+        }
+    }
+}
+
+
+@Composable
+fun CreatingProfile(navController: NavController){
+    val context= LocalContext.current
+    val name= remember { mutableStateOf("") }
+    val fatherName=remember { mutableStateOf("") }
+    val lastName=remember { mutableStateOf("") }
+    val birthDay=remember { mutableStateOf("") }
+    val gender =remember { mutableStateOf("") }
+    val email = remember { mutableStateOf("") }
+    Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+        Box(modifier = Modifier.padding(innerPadding).background(Color.White).fillMaxSize()) {
+            Text(text="Создание Профиля", fontSize=24.sp, fontWeight = FontWeight.Bold,
+                modifier = Modifier.padding(horizontal = 20.dp).padding(top=74.dp-innerPadding.calculateTopPadding()))
+            Column(modifier=Modifier.padding(horizontal=20.dp).padding(top=146.dp-innerPadding.calculateTopPadding())){
+                Text(text="Без профиля вы не сможете создавать проекты.", fontSize=14.sp, color= Caption)
+                Spacer(modifier=Modifier.height(7.dp))
+                Text(text="В профиле будут храниться результаты проектов и ваши описания.", fontSize=14.sp, color= Caption)
+            }
+            Column(modifier=Modifier.padding(20.dp).padding(top=240.dp-innerPadding.calculateTopPadding())){
+                SimpleInput(name.value, {newText->name.value=newText}, "Имя")
+                Spacer(modifier=Modifier.height(20.dp))
+                SimpleInput(fatherName.value, {newText->fatherName.value=newText}, "Отчество")
+                Spacer(modifier=Modifier.height(20.dp))
+                SimpleInput(lastName.value, {newText->lastName.value=newText}, "Фамилия")
+                Spacer(modifier=Modifier.height(20.dp))
+                SimpleInput(birthDay.value, {newText->birthDay.value=newText}, "День рождения")
+                Spacer(modifier=Modifier.height(20.dp))
+                InputDropDown(gender.value, {newText->gender.value=newText}, "Пол", listOf("Мужской", "Женский"))
+                Spacer(modifier=Modifier.height(20.dp))
+                SimpleInput(email.value, {newText->email.value=newText}, "Почта")
+            }
+            Column(modifier=Modifier.padding(20.dp).padding(bottom=10.dp).align(Alignment.BottomCenter)){
+                if(name.value==""||fatherName.value==""||lastName.value==""||birthDay.value==""||gender.value==""||email.value==""){
+                    BlueButton("Далее", {Toast.makeText(context, "Вы не ввели данные", Toast.LENGTH_LONG).show()},
+                        AccentInactive, modifier=Modifier.height(56.dp).fillMaxWidth())
+                }else{
+                    BlueButton("Далее", {
+                        if(isThisOnEmail(email.value)){
+                            navController.navigate("createProfile")
+                        }else{
+                            Toast.makeText(context, "Проверьте правильность почты", Toast.LENGTH_LONG).show()
+                        }}, Accent, modifier=Modifier.height(56.dp).fillMaxWidth())
+                }
+            }
+        }
+    }
+}
+
+
+@Composable
+fun CreatePassword(navController: NavController){
+    val context= LocalContext.current
+    val password = remember { mutableStateOf("") }
+    val repeatPassword = remember { mutableStateOf("") }
+    Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+        Box(modifier = Modifier.padding(innerPadding).background(Color.White).fillMaxSize()) {
+            Column(modifier=Modifier.padding(horizontal = 20.dp).padding(top=103.dp-innerPadding.calculateTopPadding())){
+                Row(modifier = Modifier.padding(bottom=23.dp)){
+                    Image(painter= painterResource(R.drawable.emoji_hello),contentDescription = null, modifier = Modifier.padding(end=16.dp).size(32.dp))
+                    Text(text="Создание пароля", fontSize = 24.sp, fontWeight = FontWeight.Bold)
+                }
+                Text(text="Введите новый пароль", fontSize=15.sp)
+            }
+            Column(modifier=Modifier.padding(horizontal = 20.dp).padding(top=268.dp-innerPadding.calculateTopPadding())){
+                Text(text="Новый Пароль", color= Description, fontSize = 14.sp)
+                PasswordInput(password.value, {newText->password.value=newText}, "", R.drawable.hide_password, R.drawable.show_password)
+                Spacer(modifier=Modifier.height(15.dp))
+                Text(text="Повторите пароль", color= Description, fontSize = 14.sp)
+                PasswordInput(repeatPassword.value, {newText->repeatPassword.value=newText}, "", R.drawable.hide_password, R.drawable.show_password)
+                Spacer(modifier=Modifier.height(15.dp))
+                if(repeatPassword.value==""||password.value==""){
+                    BlueButton("Сохранить", {Toast.makeText(context, "Вы не ввели данные", Toast.LENGTH_LONG).show()},
+                        AccentInactive, modifier=Modifier.height(56.dp).fillMaxWidth())
+                }else{
+                    BlueButton("Сохранить", {
+                        if(isThisOnRegexPassword(password.value)){
+                            if(password.value==repeatPassword.value){
+                                Toast.makeText(context, "Вход", Toast.LENGTH_LONG).show()
+                            }else{
+                                Toast.makeText(context, "Пароль не совпадает с повторением пароля", Toast.LENGTH_LONG).show()
+                            }
+                        }else{
+                            Toast.makeText(context, "Пароль не достаточно надёжный", Toast.LENGTH_LONG).show()
+                        }}, Accent, modifier=Modifier.height(56.dp).fillMaxWidth())
+                }
             }
         }
     }
@@ -204,7 +302,7 @@ fun EnterRegistrated(navController: NavController){
 @Composable
 fun SimpleInput(valueO: String, onChangeVal:(String)->Unit, textPlaceHolder: String){
     OutlinedTextField(value = valueO, onValueChange = onChangeVal,
-        modifier = Modifier.fillMaxWidth().padding(vertical = 5.dp),
+        modifier = Modifier.fillMaxWidth(),
         shape = RoundedCornerShape(10.dp),
         placeholder = { Text(text = textPlaceHolder, color=InputIcon) },
         colors = OutlinedTextFieldDefaults.colors(
@@ -215,10 +313,34 @@ fun SimpleInput(valueO: String, onChangeVal:(String)->Unit, textPlaceHolder: Str
 }
 
 @Composable
+fun InputDropDown(valueO: String, onChangeVal:(String)->Unit, textPlaceHolder: String, items: List<String>){
+    val drop = remember{ mutableStateOf(false)}
+    Box(modifier = Modifier.wrapContentSize()){
+        OutlinedTextField(value = valueO, onValueChange = onChangeVal,
+            modifier = Modifier.fillMaxWidth(),
+            shape = RoundedCornerShape(10.dp),
+            trailingIcon = { Image(painter = painterResource(R.drawable.arrow_down),
+                contentDescription = null, modifier = Modifier.padding(10.dp).size(10.dp).clickable { drop.value=!drop.value }) },
+            placeholder = { Text(text = textPlaceHolder, color=InputIcon) },
+            colors = OutlinedTextFieldDefaults.colors(
+                focusedBorderColor = Accent, unfocusedBorderColor = InputStroke,
+                cursorColor = Accent,
+                unfocusedContainerColor = InputBG, focusedContainerColor = InputBG
+            ))
+        DropdownMenu(expanded = drop.value, onDismissRequest = {drop.value=false}) {
+            items.forEach{item->
+                DropdownMenuItem(text={Text(item)},
+                    onClick = {onChangeVal(item); drop.value=false })
+            }
+        }
+    }
+}
+
+@Composable
 fun PasswordInput(valueO: String, onChangeVal:(String)->Unit, textPlaceHolder: String, picNotShow:Int, picShow:Int){
     val hidePassword= remember { mutableStateOf(true) }
     OutlinedTextField(value = valueO, onValueChange = onChangeVal,
-        modifier = Modifier.fillMaxWidth().padding(vertical = 5.dp),
+        modifier = Modifier.fillMaxWidth(),
         shape = RoundedCornerShape(10.dp),
         trailingIcon = { Image(painter = if(hidePassword.value) painterResource(picNotShow) else painterResource(picShow),
             contentDescription = null, modifier = Modifier.padding(15.dp).size(20.dp).clickable { hidePassword.value=!hidePassword.value }) },
@@ -234,7 +356,13 @@ fun PasswordInput(valueO: String, onChangeVal:(String)->Unit, textPlaceHolder: S
 }
 
 
+fun isThisOnRegexPassword(word: String): Boolean{
+    return (word.matches(Regex(".{8,}")))&&(word.matches(Regex(".*[a-z]+.*")))&&(word.matches(Regex(".*[A-Z]+.*")))&&(word.matches(Regex(".*[0-9]+.*")))
+}
 
+fun isThisOnEmail(word: String): Boolean{
+    return (word.matches(Regex("[a-z0-9]+@[a-z]+\\.[a-z]+")))
+}
 
 
 
@@ -244,6 +372,6 @@ fun PasswordInput(valueO: String, onChangeVal:(String)->Unit, textPlaceHolder: S
 @Composable
 fun GreetingPreview() {
     ProffMatuleTheme {
-        EnterRegistrated(navController = rememberNavController())
+        CreatePassword(navController = rememberNavController())
     }
 }
