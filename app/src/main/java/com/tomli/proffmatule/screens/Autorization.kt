@@ -246,7 +246,7 @@ fun CreatingProfile(navController: NavController){
                 }else{
                     BlueButton("Далее", {
                         if(isThisOnEmail(email.value)){
-                            navController.navigate("createProfile")
+                            navController.navigate("CreatePassword")
                         }else{
                             Toast.makeText(context, "Проверьте правильность почты", Toast.LENGTH_LONG).show()
                         }}, Accent, modifier=Modifier.height(56.dp).fillMaxWidth())
@@ -285,13 +285,77 @@ fun CreatePassword(navController: NavController){
                     BlueButton("Сохранить", {
                         if(isThisOnRegexPassword(password.value)){
                             if(password.value==repeatPassword.value){
-                                Toast.makeText(context, "Вход", Toast.LENGTH_LONG).show()
+                                navController.navigate("createCode")
                             }else{
                                 Toast.makeText(context, "Пароль не совпадает с повторением пароля", Toast.LENGTH_LONG).show()
                             }
                         }else{
                             Toast.makeText(context, "Пароль не достаточно надёжный", Toast.LENGTH_LONG).show()
                         }}, Accent, modifier=Modifier.height(56.dp).fillMaxWidth())
+                }
+            }
+        }
+    }
+}
+
+
+@Composable
+fun CreateCode(navController: NavController){
+    Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+        Box(modifier = Modifier.padding(innerPadding).background(Color.White).fillMaxSize()){
+            val code = remember{ mutableStateOf("")}
+            Column(modifier=Modifier.padding(horizontal = 50.dp).padding(top =144.dp-innerPadding.calculateTopPadding()), horizontalAlignment = Alignment.CenterHorizontally){
+                Text(text = "Создайте пароль", fontSize = 24.sp, textAlign = TextAlign.Center, fontWeight = FontWeight.Bold,
+                    modifier = Modifier.fillMaxWidth())
+                Spacer(modifier = Modifier.height(5.dp))
+                Text(text = "Для защиты ваших персональных данных", fontSize = 15.sp, textAlign = TextAlign.Center, color= Caption,
+                    modifier = Modifier.fillMaxWidth())
+            }
+            Row(modifier = Modifier.padding(horizontal=138.dp).fillMaxWidth().
+            padding(top=(264.dp-innerPadding.calculateTopPadding())).height(16.dp), horizontalArrangement = Arrangement.Center){
+                val density= LocalDensity.current
+                val radius= with(density){8.dp.toPx()}
+                val stroke = 1
+                DotCode(radius, stroke, 1, code.value.length)
+                Spacer(modifier=Modifier.width(28.dp))
+                DotCode(radius, stroke, 2, code.value.length)
+                Spacer(modifier=Modifier.width(28.dp))
+                DotCode(radius, stroke, 3, code.value.length)
+                Spacer(modifier=Modifier.width(28.dp))
+                DotCode(radius, stroke, 4, code.value.length)
+            }
+            Column(modifier=Modifier.padding(horizontal = 43.dp).padding(top=(340.dp-innerPadding.calculateTopPadding()))){
+                Row(horizontalArrangement = Arrangement.Center, modifier=Modifier.fillMaxWidth()){
+                    NumberInCircle(80, "1", {code.value= CodeAdder(code.value, 4, "1")})
+                    Spacer(modifier=Modifier.width(24.dp))
+                    NumberInCircle(80, "2", {code.value= CodeAdder(code.value, 4, "2")})
+                    Spacer(modifier=Modifier.width(24.dp))
+                    NumberInCircle(80, "3", {code.value= CodeAdder(code.value, 4, "3")})
+                }
+                Spacer(modifier=Modifier.height(24.dp))
+                Row(horizontalArrangement = Arrangement.Center, modifier=Modifier.fillMaxWidth()){
+                    NumberInCircle(80, "4", {code.value= CodeAdder(code.value, 4, "4")})
+                    Spacer(modifier=Modifier.width(24.dp))
+                    NumberInCircle(80, "5", {code.value= CodeAdder(code.value, 4, "5")})
+                    Spacer(modifier=Modifier.width(24.dp))
+                    NumberInCircle(80, "6", {code.value= CodeAdder(code.value, 4, "6")})
+                }
+                Spacer(modifier=Modifier.height(24.dp))
+                Row(horizontalArrangement = Arrangement.Center, modifier=Modifier.fillMaxWidth()){
+                    NumberInCircle(80, "7", {code.value= CodeAdder(code.value, 4, "7")})
+                    Spacer(modifier=Modifier.width(24.dp))
+                    NumberInCircle(80, "8", {code.value= CodeAdder(code.value, 4, "8")})
+                    Spacer(modifier=Modifier.width(24.dp))
+                    NumberInCircle(80, "9", {code.value= CodeAdder(code.value, 4, "9")})
+                }
+                Spacer(modifier=Modifier.height(24.dp))
+                Row(horizontalArrangement = Arrangement.Center, modifier=Modifier.fillMaxWidth()){
+                    Spacer(modifier=Modifier.size(80.dp))
+                    Spacer(modifier=Modifier.width(24.dp))
+                    NumberInCircle(80, "0", {code.value= CodeAdder(code.value, 4, "0")})
+                    Spacer(modifier=Modifier.width(24.dp))
+                    Image(painter = painterResource(R.drawable.delicion), contentDescription = null,
+                        modifier = Modifier.size(80.dp).padding(20.dp).clickable{code.value=code.value.dropLast(1)})
                 }
             }
         }
@@ -372,6 +436,6 @@ fun isThisOnEmail(word: String): Boolean{
 @Composable
 fun GreetingPreview() {
     ProffMatuleTheme {
-        CreatePassword(navController = rememberNavController())
+        CreateCode(navController = rememberNavController())
     }
 }
