@@ -32,6 +32,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.tomli.proffmatule.screens.SplashScreen
+import com.tomli.proffmatule.screens.main.MainScreen
 import com.tomli.proffmatule.screens.registration.EnterCode
 import com.tomli.proffmatule.screens.registration.CreateCode
 import com.tomli.proffmatule.screens.registration.CreatePassword
@@ -65,7 +66,7 @@ fun NavigationFun(){
     val navController = rememberNavController()
     NavHost(
         navController=navController,
-        startDestination = "enterIfRegistrated"
+        startDestination = "mainScreen" //"enterIfRegistrated"
     ) {
         composable("enterCode"){
             EnterCode(navController = navController)
@@ -81,6 +82,9 @@ fun NavigationFun(){
         }
         composable("createCode"){
             CreateCode(navController)
+        }
+        composable("mainScreen"){
+            MainScreen(navController)
         }
     }
 }

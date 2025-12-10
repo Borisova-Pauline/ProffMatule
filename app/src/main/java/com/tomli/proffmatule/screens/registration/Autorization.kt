@@ -22,12 +22,3 @@ fun isThisOnRegexPassword(word: String): Boolean {
 fun isThisOnEmail(word: String): Boolean {
     return (word.matches(Regex("[a-z0-9]+@[a-z]+\\.[a-z]+")))
 }
-
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    ProffMatuleTheme {
-
-    }
-}
