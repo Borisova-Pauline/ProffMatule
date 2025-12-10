@@ -1,0 +1,25 @@
+package com.tomli.proffmatule.screens
+
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
+import com.tomli.proffmatule.R
+import kotlinx.coroutines.delay
+
+@Composable
+fun SplashScreen(onDataLoaded:()->Unit){
+    LaunchedEffect(Unit) {
+        delay(2000)
+        onDataLoaded()
+    }
+    Box(modifier= Modifier.fillMaxSize(), contentAlignment = Alignment.Center){
+        Image(painter = painterResource(R.drawable.splash_screen), contentDescription = null,
+            contentScale = ContentScale.Crop, modifier = Modifier.fillMaxSize())
+    }
+}
