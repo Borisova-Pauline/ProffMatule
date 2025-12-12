@@ -9,6 +9,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -19,15 +21,18 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.tomli.proffmatule.components.BlueButton
 import com.tomli.proffmatule.components.InputDropDown
 import com.tomli.proffmatule.components.SimpleInput
 import com.tomli.proffmatule.ui.theme.Accent
 import com.tomli.proffmatule.ui.theme.AccentInactive
 import com.tomli.proffmatule.ui.theme.Caption
+import com.tomli.proffmatule.ui.theme.ProffMatuleTheme
 
 @Composable
 fun CreatingProfile(navController: NavController) {
@@ -38,11 +43,12 @@ fun CreatingProfile(navController: NavController) {
     val birthDay = remember { mutableStateOf("") }
     val gender = remember { mutableStateOf("") }
     val email = remember { mutableStateOf("") }
+    val scrollable = rememberScrollState()
     Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
         Box(modifier = Modifier
             .padding(innerPadding)
             .background(Color.White)
-            .fillMaxSize()) {
+            .fillMaxSize().verticalScroll(scrollable)) {
             Text(
                 text = "Создание Профиля", fontSize = 24.sp, fontWeight = FontWeight.Bold,
                 modifier = Modifier
@@ -95,7 +101,7 @@ fun CreatingProfile(navController: NavController) {
             Column(
                 modifier = Modifier
                     .padding(20.dp)
-                    .padding(bottom = 10.dp)
+                    .padding(top = 720.dp - innerPadding.calculateTopPadding())
                     .align(Alignment.BottomCenter)
             ) {
                 if (name.value == "" || fatherName.value == "" || lastName.value == "" || birthDay.value == "" || gender.value == "" || email.value == "") {

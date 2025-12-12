@@ -13,6 +13,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -25,9 +27,11 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.tomli.proffmatule.R
 import com.tomli.proffmatule.components.BlueButton
 import com.tomli.proffmatule.components.ButtonEnterWith
@@ -37,17 +41,19 @@ import com.tomli.proffmatule.ui.theme.Accent
 import com.tomli.proffmatule.ui.theme.AccentInactive
 import com.tomli.proffmatule.ui.theme.Caption
 import com.tomli.proffmatule.ui.theme.Description
+import com.tomli.proffmatule.ui.theme.ProffMatuleTheme
 
 @Composable
 fun EnterRegistrated(navController: NavController) {
     val context = LocalContext.current
     val email = remember { mutableStateOf("") }
     val password = remember { mutableStateOf("") }
+    val scrollable = rememberScrollState()
     Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-        Box(modifier = Modifier
+        Column(modifier = Modifier
             .padding(innerPadding)
             .background(Color.White)
-            .fillMaxSize()) {
+            .fillMaxSize().verticalScroll(scrollable)) {
             Column(
                 modifier = Modifier
                     .padding(horizontal = 20.dp)
@@ -65,10 +71,10 @@ fun EnterRegistrated(navController: NavController) {
                 }
                 Text(text = "Войдите, чтобы пользоваться функциями приложения", fontSize = 15.sp)
             }
+            Spacer(Modifier.height(60.dp))
             Column(
                 modifier = Modifier
                     .padding(horizontal = 20.dp)
-                    .padding(top = 262.dp - innerPadding.calculateTopPadding())
             ) {
                 Text(text = "Вход по E-mail", color = Description, fontSize = 14.sp)
                 SimpleInput(email.value, { newText -> email.value = newText }, "example@mail.com")
@@ -115,11 +121,12 @@ fun EnterRegistrated(navController: NavController) {
                         .fillMaxWidth()
                         .clickable { navController.navigate("createProfile") })
             }
+            Spacer(Modifier.weight(1f))
             Column(
                 modifier = Modifier
                     .padding(horizontal = 20.dp)
                     .padding(bottom = 60.dp)
-                    .align(Alignment.BottomCenter)
+                    .align(Alignment.CenterHorizontally)
             ) {
                 Text(
                     text = "Или войдите с помощью",

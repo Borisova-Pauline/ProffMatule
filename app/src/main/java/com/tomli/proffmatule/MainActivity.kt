@@ -48,7 +48,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            var showSplash = remember{ mutableStateOf(true)}
+            val showSplash = remember{ mutableStateOf(true)}
             ProffMatuleTheme {
                 if(showSplash.value){
                     SplashScreen{ showSplash.value=false }

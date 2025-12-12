@@ -13,6 +13,7 @@
         android:theme="@style/Theme.ProffMatule"
         tools:targetApi="31">
         <activity
+            android:screenOrientation="sensor"
             android:name=".MainActivity"
             android:exported="true"
             android:label="@string/app_name"

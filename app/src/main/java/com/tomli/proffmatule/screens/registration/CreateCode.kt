@@ -14,6 +14,8 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -36,11 +38,12 @@ import com.tomli.proffmatule.ui.theme.Caption
 
 @Composable
 fun CreateCode(navController: NavController) {
+    val scrollable = rememberScrollState()
     Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
         Box(modifier = Modifier
             .padding(innerPadding)
             .background(Color.White)
-            .fillMaxSize()) {
+            .fillMaxSize().verticalScroll(scrollable)) {
             val code = remember { mutableStateOf("") }
             Column(
                 modifier = Modifier
