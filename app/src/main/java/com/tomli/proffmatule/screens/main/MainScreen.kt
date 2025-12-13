@@ -22,6 +22,7 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.tomli.proffmatule.R
 import com.tomli.proffmatule.components.ButtonNavigationApp
+import com.tomli.proffmatule.components.Tabbar
 import com.tomli.proffmatule.screens.registration.CreatingProfile
 import com.tomli.proffmatule.screens.registration.EnterCode
 import com.tomli.proffmatule.screens.registration.EnterRegistrated
@@ -30,7 +31,7 @@ import com.tomli.proffmatule.ui.theme.ProffMatuleTheme
 
 @Composable
 fun MainScreen(navController: NavController){
-    val screen = remember{ mutableStateOf(AppScreens.Profile)}
+    val screen = remember{ mutableStateOf(AppScreens.Main)}
     Scaffold(modifier=Modifier.fillMaxSize()) { innerPadding ->
         Box(modifier = Modifier
             .padding(innerPadding)
@@ -39,7 +40,7 @@ fun MainScreen(navController: NavController){
             Column(modifier=Modifier.fillMaxSize(1f)){
                 when(screen.value){
                     AppScreens.Main ->{
-
+                        MainPage(navController)
                     }
                     AppScreens.Catalog->{
 
@@ -48,19 +49,11 @@ fun MainScreen(navController: NavController){
 
                     }
                     AppScreens.Profile->{
-                        ProfileScreen()
+                        ProfileScreen(navController)
                     }
                 }
             }
-            Column(modifier=Modifier.align(Alignment.BottomCenter)){
-                HorizontalDivider(thickness = 1.dp, color = InputStroke)
-                Row(modifier=Modifier.fillMaxWidth().height(70.dp)){
-                    ButtonNavigationApp(boxModifier = Modifier.weight(1f), screen.value, {screen.value=AppScreens.Main}, "Главная", R.drawable.main_active, R.drawable.main_unactive, AppScreens.Main)
-                    ButtonNavigationApp(boxModifier = Modifier.weight(1f), screen.value, {screen.value=AppScreens.Catalog}, "Каталог", R.drawable.catalog_active, R.drawable.catalog_unactive, AppScreens.Catalog)
-                    ButtonNavigationApp(boxModifier = Modifier.weight(1f), screen.value, {screen.value=AppScreens.Projects}, "Проекты", R.drawable.projects_active, R.drawable.projects_unactive, AppScreens.Projects)
-                    ButtonNavigationApp(boxModifier = Modifier.weight(1f), screen.value, {screen.value=AppScreens.Profile}, "Профиль", R.drawable.user_active, R.drawable.user_unactive, AppScreens.Profile)
-                }
-            }
+            Tabbar(modifier= Modifier.align(Alignment.BottomCenter), screen.value, {newScreen ->  screen.value=newScreen})
         }
     }
 }
@@ -78,10 +71,10 @@ enum class AppScreens{
 
 
 
-@Preview(showBackground = true)
+/*@Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
     ProffMatuleTheme {
         CreatingProfile(rememberNavController())
     }
-}
+}*/

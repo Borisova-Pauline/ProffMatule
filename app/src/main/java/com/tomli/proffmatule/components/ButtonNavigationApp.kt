@@ -18,14 +18,34 @@ import androidx.compose.ui.unit.sp
 import com.tomli.proffmatule.screens.main.AppScreens
 
 @Composable
-fun ButtonNavigationApp(boxModifier: Modifier, screenVal: AppScreens, onScreenValChange:()->Unit, text: String, activePic: Int, unactivePic: Int, needScreenValue: AppScreens){
-    Box(modifier = boxModifier){
-        Column(modifier= Modifier.fillMaxSize().padding(7.dp), horizontalAlignment = Alignment.CenterHorizontally){
-            Image(painter= painterResource(if(screenVal==needScreenValue)
-                activePic else unactivePic), contentDescription = null,
-                modifier = Modifier.clickable {onScreenValChange()}.size(32.dp))
-            Text(text=text, color=if(screenVal==needScreenValue)
-                Color(0xff1A6FEE) else Color(0xffB8C1CC), fontSize = 12.sp)
+fun ButtonNavigationApp(
+    boxModifier: Modifier,
+    screenVal: AppScreens,
+    onScreenValChange: () -> Unit,
+    text: String,
+    activePic: Int,
+    unactivePic: Int,
+    needScreenValue: AppScreens
+) {
+    Box(modifier = boxModifier) {
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(7.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Image(painter = painterResource(
+                if (screenVal == needScreenValue)
+                    activePic else unactivePic
+            ), contentDescription = null,
+                modifier = Modifier
+                    .clickable { onScreenValChange() }
+                    .size(32.dp)
+            )
+            Text(
+                text = text, color = if (screenVal == needScreenValue)
+                    Color(0xff1A6FEE) else Color(0xffB8C1CC), fontSize = 12.sp
+            )
         }
     }
 }

@@ -24,48 +24,106 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.tomli.proffmatule.R
 import com.tomli.proffmatule.ui.theme.Caption
 import com.tomli.proffmatule.ui.theme.ErrorColor
 
 @Composable
-fun ProfileScreen(){
+fun ProfileScreen(navController: NavController) {
     val userName = remember { mutableStateOf("UserName") }
     val email = remember { mutableStateOf("example@gmail.com") }
-    val isChecked = remember{ mutableStateOf(false) }
+    val isChecked = remember { mutableStateOf(false) }
     val context = LocalContext.current
-    Column(Modifier.padding(horizontal = 20.dp)){
-        Column(modifier = Modifier.padding(top=32.dp)){
-            Text(text="${userName.value}", fontSize = 24.sp, fontWeight = FontWeight.Bold)
+    Column(Modifier.padding(horizontal = 20.dp)) {
+        Column(modifier = Modifier.padding(top = 32.dp)) {
+            Text(text = "${userName.value}", fontSize = 24.sp, fontWeight = FontWeight.Bold)
             Spacer(Modifier.height(5.dp))
-            Text(text="${email.value}", fontSize = 16.sp, color= Caption)
+            Text(text = "${email.value}", fontSize = 16.sp, color = Caption)
         }
         Spacer(Modifier.height(15.dp))
-        Column(modifier = Modifier.fillMaxWidth()){
-            Row(modifier = Modifier.height(64.dp), verticalAlignment = Alignment.CenterVertically){
-                Image(painter= painterResource(R.drawable.order),contentDescription = null, modifier = Modifier.padding(end=20.dp).size(32.dp))
-                Text(text="Мои заказы", fontSize = 17.sp, fontWeight = FontWeight.Bold)
+        Column(modifier = Modifier.fillMaxWidth()) {
+            Row(modifier = Modifier.height(64.dp), verticalAlignment = Alignment.CenterVertically) {
+                Image(
+                    painter = painterResource(R.drawable.order),
+                    contentDescription = null,
+                    modifier = Modifier
+                        .padding(end = 20.dp)
+                        .size(32.dp)
+                )
+                Text(text = "Мои заказы", fontSize = 17.sp, fontWeight = FontWeight.Bold)
             }
-            Box(modifier= Modifier.fillMaxWidth()){
-                Row(modifier = Modifier.height(64.dp).align(Alignment.CenterStart), verticalAlignment = Alignment.CenterVertically){
-                    Image(painter= painterResource(R.drawable.settings),contentDescription = null, modifier = Modifier.padding(end=20.dp).size(32.dp))
-                    Text(text="Уведомления", fontSize = 17.sp, fontWeight = FontWeight.Bold)
+            Box(modifier = Modifier.fillMaxWidth()) {
+                Row(
+                    modifier = Modifier
+                        .height(64.dp)
+                        .align(Alignment.CenterStart),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Image(
+                        painter = painterResource(R.drawable.settings),
+                        contentDescription = null,
+                        modifier = Modifier
+                            .padding(end = 20.dp)
+                            .size(32.dp)
+                    )
+                    Text(text = "Уведомления", fontSize = 17.sp, fontWeight = FontWeight.Bold)
                 }
-                Image(painter = painterResource(if(isChecked.value) R.drawable.switch_on else R.drawable.switch_off), contentDescription = null,
-                    modifier = Modifier.align(Alignment.CenterEnd).clickable { isChecked.value=!isChecked.value
-                    Toast.makeText(context, if(isChecked.value) "Уведомления включены" else "Уведомления выключены", Toast.LENGTH_LONG).show()}.size(50.dp))
+                Image(painter = painterResource(if (isChecked.value) R.drawable.switch_on else R.drawable.switch_off),
+                    contentDescription = null,
+                    modifier = Modifier
+                        .align(Alignment.CenterEnd)
+                        .clickable {
+                            isChecked.value = !isChecked.value
+                            Toast.makeText(
+                                context,
+                                if (isChecked.value) "Уведомления включены" else "Уведомления выключены",
+                                Toast.LENGTH_LONG
+                            ).show()
+                        }
+                        .size(50.dp)
+                )
             }
         }
-        Box(modifier= Modifier.fillMaxSize(1f), contentAlignment = Alignment.Center){
-            Column{
-                Text(text="Политика конфиденциальности", color= Caption, fontSize = 15.sp, textAlign = TextAlign.Center,modifier= Modifier.fillMaxWidth().
-                clickable { Toast.makeText(context, "Переход на политику конфиденциальности", Toast.LENGTH_LONG).show() })
+        Box(modifier = Modifier.fillMaxSize(1f), contentAlignment = Alignment.Center) {
+            Column {
+                Text(text = "Политика конфиденциальности",
+                    color = Caption,
+                    fontSize = 15.sp,
+                    textAlign = TextAlign.Center,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .clickable {
+                            Toast.makeText(
+                                context,
+                                "Переход на политику конфиденциальности",
+                                Toast.LENGTH_LONG
+                            ).show()
+                        })
                 Spacer(Modifier.height(24.dp))
-                Text(text="Пользовательское соглашение", color= Caption, fontSize = 15.sp, textAlign = TextAlign.Center,modifier= Modifier.fillMaxWidth().
-                clickable { Toast.makeText(context, "Переход на пользователькое соглашение", Toast.LENGTH_LONG).show() })
+                Text(text = "Пользовательское соглашение",
+                    color = Caption,
+                    fontSize = 15.sp,
+                    textAlign = TextAlign.Center,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .clickable {
+                            Toast.makeText(
+                                context,
+                                "Переход на пользователькое соглашение",
+                                Toast.LENGTH_LONG
+                            ).show()
+                        })
                 Spacer(Modifier.height(24.dp))
-                Text(text="Выход", color= ErrorColor, fontSize = 15.sp, textAlign = TextAlign.Center,modifier= Modifier.fillMaxWidth().
-                clickable { Toast.makeText(context, "Выход из аккаунта", Toast.LENGTH_LONG).show() })
+                Text(text = "Выход",
+                    color = ErrorColor,
+                    fontSize = 15.sp,
+                    textAlign = TextAlign.Center,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .clickable {
+                            navController.navigate("enterIfRegistrated")
+                        })
             }
         }
 
