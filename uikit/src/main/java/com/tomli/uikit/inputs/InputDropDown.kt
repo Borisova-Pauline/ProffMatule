@@ -1,4 +1,4 @@
-package com.tomli.proffmatule.components
+package com.tomli.uikit.inputs
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
@@ -19,11 +19,11 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import com.tomli.proffmatule.R
-import com.tomli.proffmatule.ui.theme.Accent
-import com.tomli.proffmatule.ui.theme.InputBG
-import com.tomli.proffmatule.ui.theme.InputIcon
-import com.tomli.proffmatule.ui.theme.InputStroke
+import com.tomli.uikit.Accent
+import com.tomli.uikit.InputBG
+import com.tomli.uikit.InputIcon
+import com.tomli.uikit.InputStroke
+import com.tomli.uikit.R
 
 @Composable
 fun InputDropDown(

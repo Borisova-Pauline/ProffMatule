@@ -1,4 +1,4 @@
-package com.tomli.proffmatule.components
+package com.tomli.uikit.tabbar
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
@@ -15,7 +15,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.tomli.proffmatule.screens.main.AppScreens
 
 @Composable
 fun ButtonNavigationApp(

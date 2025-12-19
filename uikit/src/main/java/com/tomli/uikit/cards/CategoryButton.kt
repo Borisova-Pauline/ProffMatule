@@ -1,4 +1,4 @@
-package com.tomli.proffmatule.components
+package com.tomli.uikit.cards
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -11,9 +11,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.tomli.proffmatule.screens.main.MenuCategories
-import com.tomli.proffmatule.ui.theme.Accent
-import com.tomli.proffmatule.ui.theme.InputBG
+import com.tomli.uikit.Accent
+import com.tomli.uikit.InputBG
 
 @Composable
 fun CategoryButton(buttonText: String, onClick:()->Unit, thisValue: MenuCategories, needValue: MenuCategories){

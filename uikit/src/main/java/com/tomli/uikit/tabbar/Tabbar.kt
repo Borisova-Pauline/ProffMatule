@@ -1,17 +1,17 @@
-package com.tomli.proffmatule.components
+package com.tomli.uikit.tabbar
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import com.tomli.proffmatule.R
-import com.tomli.proffmatule.screens.main.AppScreens
-import com.tomli.proffmatule.ui.theme.InputStroke
+import com.tomli.uikit.InputStroke
+import com.tomli.uikit.R
 
 @Composable
 fun Tabbar(
@@ -19,7 +19,7 @@ fun Tabbar(
     screen: AppScreens,
     onScreenChange: (newScreen: AppScreens) -> Unit
 ) {
-    Column(modifier = modifier) {
+    Column(modifier = modifier.background(Color.White)) {
         HorizontalDivider(thickness = 1.dp, color = InputStroke)
         Row(modifier = Modifier
             .fillMaxWidth()

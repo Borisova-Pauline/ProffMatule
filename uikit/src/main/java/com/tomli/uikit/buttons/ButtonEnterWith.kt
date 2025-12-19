@@ -1,4 +1,4 @@
-package com.tomli.proffmatule.components
+package com.tomli.uikit.buttons
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
@@ -17,7 +17,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.tomli.proffmatule.ui.theme.InputStroke
+import com.tomli.uikit.InputStroke
 
 @Composable
 fun ButtonEnterWith(modifier: Modifier, onClick: () -> Unit, icon: Int, text: String){

@@ -1,4 +1,4 @@
-package com.tomli.proffmatule.components
+package com.tomli.uikit.buttons
 
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button

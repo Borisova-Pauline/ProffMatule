@@ -21,18 +21,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import androidx.navigation.compose.rememberNavController
-import com.tomli.proffmatule.components.BlueButton
-import com.tomli.proffmatule.components.InputDropDown
-import com.tomli.proffmatule.components.SimpleInput
+import com.tomli.uikit.buttons.BlueButton
 import com.tomli.proffmatule.ui.theme.Accent
 import com.tomli.proffmatule.ui.theme.AccentInactive
 import com.tomli.proffmatule.ui.theme.Caption
-import com.tomli.proffmatule.ui.theme.ProffMatuleTheme
+import com.tomli.uikit.inputs.InputDropDown
+import com.tomli.uikit.inputs.SimpleInput
 
 @Composable
 fun CreatingProfile(navController: NavController) {

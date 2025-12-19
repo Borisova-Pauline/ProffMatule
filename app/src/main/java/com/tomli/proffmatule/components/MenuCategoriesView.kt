@@ -8,7 +8,8 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.tomli.proffmatule.screens.main.MenuCategories
+import com.tomli.uikit.cards.CategoryButton
+import com.tomli.uikit.cards.MenuCategories
 
 @Composable
 fun MenuCategoriesView(category: MenuCategories, categoryChange:(newCateg: MenuCategories)->Unit){

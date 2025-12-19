@@ -24,18 +24,15 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import androidx.navigation.compose.rememberNavController
 import com.tomli.proffmatule.R
-import com.tomli.proffmatule.components.BlueButton
-import com.tomli.proffmatule.components.PasswordInput
+import com.tomli.uikit.buttons.BlueButton
 import com.tomli.proffmatule.ui.theme.Accent
 import com.tomli.proffmatule.ui.theme.AccentInactive
 import com.tomli.proffmatule.ui.theme.Description
-import com.tomli.proffmatule.ui.theme.ProffMatuleTheme
+import com.tomli.uikit.inputs.PasswordInput
 
 @Composable
 fun CreatePassword(navController: NavController) {

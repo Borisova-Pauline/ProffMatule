@@ -4,7 +4,6 @@ import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -27,21 +26,18 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import androidx.navigation.compose.rememberNavController
 import com.tomli.proffmatule.R
-import com.tomli.proffmatule.components.BlueButton
-import com.tomli.proffmatule.components.ButtonEnterWith
-import com.tomli.proffmatule.components.PasswordInput
-import com.tomli.proffmatule.components.SimpleInput
+import com.tomli.uikit.buttons.BlueButton
 import com.tomli.proffmatule.ui.theme.Accent
 import com.tomli.proffmatule.ui.theme.AccentInactive
 import com.tomli.proffmatule.ui.theme.Caption
 import com.tomli.proffmatule.ui.theme.Description
-import com.tomli.proffmatule.ui.theme.ProffMatuleTheme
+import com.tomli.uikit.buttons.ButtonEnterWith
+import com.tomli.uikit.inputs.PasswordInput
+import com.tomli.uikit.inputs.SimpleInput
 
 @Composable
 fun EnterRegistrated(navController: NavController) {

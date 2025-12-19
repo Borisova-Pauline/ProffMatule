@@ -1,4 +1,4 @@
-package com.tomli.proffmatule.screens.main
+package com.tomli.uikit.cards
 
 data class CardSupply(
     val id: Int,

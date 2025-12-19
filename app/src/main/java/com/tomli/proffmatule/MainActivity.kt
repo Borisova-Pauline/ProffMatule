@@ -32,6 +32,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.tomli.proffmatule.screens.SplashScreen
+import com.tomli.proffmatule.screens.main.BasketScreen
 import com.tomli.proffmatule.screens.main.MainScreen
 import com.tomli.proffmatule.screens.registration.EnterCode
 import com.tomli.proffmatule.screens.registration.CreateCode
@@ -85,6 +86,9 @@ fun NavigationFun(){
         }
         composable("mainScreen"){
             MainScreen(navController)
+        }
+        composable("basketScreen") {
+            BasketScreen(navController)
         }
     }
 }

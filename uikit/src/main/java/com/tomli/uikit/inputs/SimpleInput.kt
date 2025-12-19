@@ -1,4 +1,4 @@
-package com.tomli.proffmatule.components
+package com.tomli.uikit.inputs
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -8,10 +8,10 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.tomli.proffmatule.ui.theme.Accent
-import com.tomli.proffmatule.ui.theme.InputBG
-import com.tomli.proffmatule.ui.theme.InputIcon
-import com.tomli.proffmatule.ui.theme.InputStroke
+import com.tomli.uikit.Accent
+import com.tomli.uikit.InputBG
+import com.tomli.uikit.InputIcon
+import com.tomli.uikit.InputStroke
 
 @Composable
 fun SimpleInput(valueO: String, onChangeVal: (String) -> Unit, textPlaceHolder: String) {

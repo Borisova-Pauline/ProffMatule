@@ -1,4 +1,4 @@
-package com.tomli.proffmatule.components
+package com.tomli.uikit.search
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
@@ -16,11 +16,11 @@ import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.tomli.proffmatule.R
-import com.tomli.proffmatule.ui.theme.Accent
-import com.tomli.proffmatule.ui.theme.Caption
-import com.tomli.proffmatule.ui.theme.InputBG
-import com.tomli.proffmatule.ui.theme.InputStroke
+import com.tomli.uikit.Accent
+import com.tomli.uikit.Caption
+import com.tomli.uikit.InputBG
+import com.tomli.uikit.InputStroke
+import com.tomli.uikit.R
 
 @Composable
 fun Search(text: String, onValChange: (newText: String) -> Unit, modifier: Modifier) {
