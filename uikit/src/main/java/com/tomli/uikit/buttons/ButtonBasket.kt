@@ -14,9 +14,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.tomli.uikit.R
+import com.tomli.uikit.theme.robotoFlexFont
 
 @Composable
 fun ButtonBasket(onClick:()->Unit, colorButton: Color, modifier: Modifier, totalPrice: Int){
@@ -26,8 +28,8 @@ fun ButtonBasket(onClick:()->Unit, colorButton: Color, modifier: Modifier, total
         Row(modifier= Modifier.padding(horizontal = 10.dp, vertical = 15.dp)){
             Image(painter = painterResource(R.drawable.basket), contentDescription = null, modifier= Modifier.size(20.dp))
             Spacer(Modifier.width(16.dp))
-            Text(text="В корзину", fontSize = 17.sp, modifier= Modifier.weight(1f))
-            Text(text="$totalPrice ₽", fontSize = 17.sp)
+            Text(text="В корзину", fontSize = 17.sp, modifier= Modifier.weight(1f), fontFamily = robotoFlexFont, fontWeight = FontWeight(600))
+            Text(text="$totalPrice ₽", fontSize = 17.sp, fontFamily = robotoFlexFont, fontWeight = FontWeight(600))
         }
     }
 }

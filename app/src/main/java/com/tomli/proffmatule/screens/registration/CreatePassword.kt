@@ -33,6 +33,7 @@ import com.tomli.proffmatule.ui.theme.Accent
 import com.tomli.proffmatule.ui.theme.AccentInactive
 import com.tomli.proffmatule.ui.theme.Description
 import com.tomli.uikit.inputs.PasswordInput
+import com.tomli.uikit.theme.spProDisplayRegular
 
 @Composable
 fun CreatePassword(navController: NavController) {
@@ -58,16 +59,16 @@ fun CreatePassword(navController: NavController) {
                             .padding(end = 16.dp)
                             .size(32.dp)
                     )
-                    Text(text = "Создание пароля", fontSize = 24.sp, fontWeight = FontWeight.Bold)
+                    Text(text = "Создание пароля", fontSize = 24.sp, fontFamily = spProDisplayRegular, fontWeight = FontWeight.Bold)
                 }
-                Text(text = "Введите новый пароль", fontSize = 15.sp)
+                Text(text = "Введите новый пароль", fontSize = 15.sp, fontFamily = spProDisplayRegular)
             }
             Column(
                 modifier = Modifier
                     .padding(horizontal = 20.dp)
                     .padding(top = 268.dp - innerPadding.calculateTopPadding())
             ) {
-                Text(text = "Новый Пароль", color = Description, fontSize = 14.sp)
+                Text(text = "Новый Пароль", color = Description,fontFamily = spProDisplayRegular, fontSize = 14.sp)
                 PasswordInput(
                     password.value,
                     { newText -> password.value = newText },
@@ -76,7 +77,7 @@ fun CreatePassword(navController: NavController) {
                     R.drawable.show_password
                 )
                 Spacer(modifier = Modifier.height(15.dp))
-                Text(text = "Повторите пароль", color = Description, fontSize = 14.sp)
+                Text(text = "Повторите пароль", fontFamily = spProDisplayRegular,color = Description, fontSize = 14.sp)
                 PasswordInput(
                     repeatPassword.value,
                     { newText -> repeatPassword.value = newText },

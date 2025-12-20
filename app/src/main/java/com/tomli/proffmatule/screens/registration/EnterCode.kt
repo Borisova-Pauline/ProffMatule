@@ -36,6 +36,7 @@ import com.tomli.proffmatule.R
 import com.tomli.proffmatule.components.DotCode
 import com.tomli.proffmatule.components.NumberInCircle
 import com.tomli.proffmatule.ui.theme.ProffMatuleTheme
+import com.tomli.uikit.theme.spProDisplayRegular
 
 @Composable
 fun EnterCode(navController: NavController) {
@@ -47,7 +48,7 @@ fun EnterCode(navController: NavController) {
             .fillMaxSize().verticalScroll(scrollable)) {
             val code = remember { mutableStateOf("") }
             Text(
-                text = "Вход",
+                text = "Вход",fontFamily = spProDisplayRegular,
                 fontSize = 24.sp,
                 textAlign = TextAlign.Center,
                 fontWeight = FontWeight.Bold,

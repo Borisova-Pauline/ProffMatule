@@ -35,6 +35,7 @@ import com.tomli.uikit.cards.CardSupply
 import com.tomli.uikit.cards.CardSupplyView
 import com.tomli.uikit.cards.MenuCategories
 import com.tomli.uikit.search.Search
+import com.tomli.uikit.theme.spProDisplayRegular
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -95,7 +96,7 @@ fun MainPage(navController: NavController, searchValue: String) {
         Column {
             Text(
                 text = "Акции и новости",
-                color = Caption,
+                color = Caption,fontFamily= spProDisplayRegular,
                 fontSize = 17.sp,
                 modifier = Modifier
                     .padding(horizontal = 20.dp)
@@ -116,7 +117,7 @@ fun MainPage(navController: NavController, searchValue: String) {
             }
             Text(
                 text = "Каталог описаний",
-                color = Caption,
+                color = Caption, fontFamily= spProDisplayRegular,
                 fontSize = 17.sp,
                 modifier = Modifier
                     .padding(horizontal = 20.dp)

@@ -26,7 +26,7 @@ import com.tomli.uikit.tabbar.Tabbar
 
 @Composable
 fun MainScreen(navController: NavController){
-    val screen = remember{ mutableStateOf(AppScreens.Catalog)}
+    val screen = remember{ mutableStateOf(AppScreens.Projects)}
     val searchValue = remember { mutableStateOf("") }
     Scaffold(modifier=Modifier.fillMaxSize()) { innerPadding ->
         Column(modifier = Modifier
@@ -64,7 +64,7 @@ fun MainScreen(navController: NavController){
                 }else{
                     when(screen.value){
                         AppScreens.Projects->{
-
+                            ProjectPage(navController)
                         }
                         AppScreens.Profile->{
                             ProfileScreen(navController)

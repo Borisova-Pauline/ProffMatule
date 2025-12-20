@@ -35,6 +35,8 @@ import com.tomli.uikit.Accent
 import com.tomli.uikit.Caption
 import com.tomli.uikit.R
 import com.tomli.uikit.buttons.BlueButton
+import com.tomli.uikit.theme.robotoFlexFont
+import com.tomli.uikit.theme.spProDisplayRegular
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -44,7 +46,7 @@ fun BottomSheet(card: CardSupply, onDismiss:()->Unit, sheetState: SheetState){
         dragHandle = null) {
         Column(modifier=Modifier.padding(horizontal = 20.dp, vertical = 24.dp)){
             Row(modifier=Modifier.fillMaxWidth()){
-                Text(text=card.name, fontSize = 20.sp, fontWeight = FontWeight.Bold, modifier = Modifier.weight(1f))
+                Text(text=card.name, fontSize = 20.sp, fontWeight = FontWeight(600), modifier = Modifier.weight(1f), fontFamily = spProDisplayRegular)
                 Image(painter= painterResource(R.drawable.close_round), contentDescription = null, modifier = Modifier.size(24.dp).clickable { onDismiss() })
             }
             Spacer(modifier=Modifier.height(20.dp))
@@ -54,10 +56,11 @@ fun BottomSheet(card: CardSupply, onDismiss:()->Unit, sheetState: SheetState){
                         Text(
                             text = item.section,
                             color = Caption,
-                            fontWeight = FontWeight.Bold,
-                            fontSize = 16.sp
+                            fontWeight = FontWeight(500),
+                            fontSize = 16.sp,
+                            fontFamily = spProDisplayRegular
                         )
-                        Text(text = item.descr, fontSize = 15.sp)
+                        Text(text = item.descr, fontSize = 15.sp, fontFamily = robotoFlexFont)
                         Spacer(modifier = Modifier.height(20.dp))
                     }
                 }

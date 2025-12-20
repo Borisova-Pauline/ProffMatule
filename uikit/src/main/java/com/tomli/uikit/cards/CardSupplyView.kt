@@ -23,6 +23,7 @@ import androidx.compose.ui.unit.sp
 import com.tomli.uikit.Accent
 import com.tomli.uikit.Caption
 import com.tomli.uikit.ColorDivider
+import com.tomli.uikit.theme.robotoFont
 
 @Composable
 fun CardSupplyView(card: CardSupply, onAddClick: () -> Unit) {
@@ -37,17 +38,27 @@ fun CardSupplyView(card: CardSupply, onAddClick: () -> Unit) {
             .width(335.dp)
             .height(136.dp)
     ) {
-        Text(text = card.name, fontWeight = FontWeight.Bold, fontSize = 16.sp)
+        Text(
+            text = card.name,
+            fontWeight = FontWeight(500),
+            fontSize = 16.sp,
+            fontFamily = robotoFont
+        )
         Row(modifier = Modifier.weight(1f)) {
             Column {
                 Spacer(modifier = Modifier.weight(1f))
                 Text(
                     text = card.category.screenName,
-                    fontWeight = FontWeight.Bold,
+                    fontWeight = FontWeight(600),
                     color = Caption,
-                    fontSize = 14.sp
+                    fontSize = 14.sp, fontFamily = robotoFont
                 )
-                Text(text = "${card.price} ₽", fontWeight = FontWeight.Bold, fontSize = 17.sp)
+                Text(
+                    text = "${card.price} ₽",
+                    fontWeight = FontWeight(600),
+                    fontSize = 17.sp,
+                    fontFamily = robotoFont
+                )
             }
             Spacer(modifier = Modifier.weight(1f))
             Column(modifier = Modifier.width(96.dp)) {
@@ -66,7 +77,13 @@ fun CardSupplyView(card: CardSupply, onAddClick: () -> Unit) {
                             ),
                         contentAlignment = Alignment.Center
                     ) {
-                        Text(text = "Убрать", color = Accent, fontSize = 14.sp)
+                        Text(
+                            text = "Убрать",
+                            color = Accent,
+                            fontSize = 14.sp,
+                            fontWeight = FontWeight(600),
+                            fontFamily = robotoFont
+                        )
                     }
                 } else {
                     Box(
@@ -76,7 +93,13 @@ fun CardSupplyView(card: CardSupply, onAddClick: () -> Unit) {
                             .background(color = Accent, shape = RoundedCornerShape(10.dp))
                             .clickable { onAddClick() }, contentAlignment = Alignment.Center
                     ) {
-                        Text(text = "Добавить", color = Color.White, fontSize = 14.sp)
+                        Text(
+                            text = "Добавить",
+                            color = Color.White,
+                            fontSize = 14.sp,
+                            fontWeight = FontWeight(600),
+                            fontFamily = robotoFont
+                        )
                     }
                 }
             }

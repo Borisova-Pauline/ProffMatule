@@ -28,6 +28,7 @@ import androidx.navigation.NavController
 import com.tomli.proffmatule.R
 import com.tomli.proffmatule.ui.theme.Caption
 import com.tomli.proffmatule.ui.theme.ErrorColor
+import com.tomli.uikit.theme.spProDisplayRegular
 
 @Composable
 fun ProfileScreen(navController: NavController) {
@@ -37,9 +38,9 @@ fun ProfileScreen(navController: NavController) {
     val context = LocalContext.current
     Column(Modifier.padding(horizontal = 20.dp)) {
         Column(modifier = Modifier.padding(top = 32.dp)) {
-            Text(text = "${userName.value}", fontSize = 24.sp, fontWeight = FontWeight.Bold)
+            Text(text = "${userName.value}", fontSize = 24.sp,fontFamily= spProDisplayRegular, fontWeight = FontWeight.Bold)
             Spacer(Modifier.height(5.dp))
-            Text(text = "${email.value}", fontSize = 16.sp, color = Caption)
+            Text(text = "${email.value}", fontSize = 16.sp,fontFamily= spProDisplayRegular, color = Caption)
         }
         Spacer(Modifier.height(15.dp))
         Column(modifier = Modifier.fillMaxWidth()) {
@@ -51,7 +52,7 @@ fun ProfileScreen(navController: NavController) {
                         .padding(end = 20.dp)
                         .size(32.dp)
                 )
-                Text(text = "Мои заказы", fontSize = 17.sp, fontWeight = FontWeight.Bold)
+                Text(text = "Мои заказы", fontSize = 17.sp,fontFamily= spProDisplayRegular, fontWeight = FontWeight.Bold)
             }
             Box(modifier = Modifier.fillMaxWidth()) {
                 Row(
@@ -67,7 +68,7 @@ fun ProfileScreen(navController: NavController) {
                             .padding(end = 20.dp)
                             .size(32.dp)
                     )
-                    Text(text = "Уведомления", fontSize = 17.sp, fontWeight = FontWeight.Bold)
+                    Text(text = "Уведомления",fontFamily= spProDisplayRegular, fontSize = 17.sp, fontWeight = FontWeight.Bold)
                 }
                 Image(painter = painterResource(if (isChecked.value) R.drawable.switch_on else R.drawable.switch_off),
                     contentDescription = null,
@@ -88,7 +89,7 @@ fun ProfileScreen(navController: NavController) {
         Box(modifier = Modifier.fillMaxSize(1f), contentAlignment = Alignment.Center) {
             Column {
                 Text(text = "Политика конфиденциальности",
-                    color = Caption,
+                    color = Caption, fontFamily= spProDisplayRegular,
                     fontSize = 15.sp,
                     textAlign = TextAlign.Center,
                     modifier = Modifier
@@ -102,7 +103,7 @@ fun ProfileScreen(navController: NavController) {
                         })
                 Spacer(Modifier.height(24.dp))
                 Text(text = "Пользовательское соглашение",
-                    color = Caption,
+                    color = Caption,fontFamily= spProDisplayRegular,
                     fontSize = 15.sp,
                     textAlign = TextAlign.Center,
                     modifier = Modifier
@@ -116,7 +117,7 @@ fun ProfileScreen(navController: NavController) {
                         })
                 Spacer(Modifier.height(24.dp))
                 Text(text = "Выход",
-                    color = ErrorColor,
+                    color = ErrorColor,fontFamily= spProDisplayRegular,
                     fontSize = 15.sp,
                     textAlign = TextAlign.Center,
                     modifier = Modifier
@@ -126,6 +127,5 @@ fun ProfileScreen(navController: NavController) {
                         })
             }
         }
-
     }
 }

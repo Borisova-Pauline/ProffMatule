@@ -18,6 +18,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.tomli.proffmatule.ui.theme.Accent
 import com.tomli.proffmatule.ui.theme.InputBG
+import com.tomli.uikit.theme.spProDisplayRegular
 
 @Composable
 fun NumberInCircle(radius: Int, number: String, onClick: () -> Unit) {
@@ -37,6 +38,6 @@ fun NumberInCircle(radius: Int, number: String, onClick: () -> Unit) {
                 center = center
             )
         }
-        Text(text = number, fontSize = 24.sp, modifier = Modifier.align(Alignment.Center))
+        Text(text = number,fontFamily= spProDisplayRegular, fontSize = 24.sp, modifier = Modifier.align(Alignment.Center))
     }
 }

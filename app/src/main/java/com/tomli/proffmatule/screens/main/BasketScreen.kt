@@ -35,6 +35,7 @@ import com.tomli.uikit.cards.MenuCategories
 import com.tomli.uikit.cart.CardExtended
 import com.tomli.uikit.cart.CartCard
 import com.tomli.uikit.cart.Header
+import com.tomli.uikit.theme.spProDisplayRegular
 
 @Composable
 fun BasketScreen(navController: NavController){
@@ -96,9 +97,9 @@ fun BasketScreen(navController: NavController){
                     }
                 }
                 Row{
-                    Text(text="Сумма", fontSize = 20.sp, fontWeight = FontWeight.Bold)
+                    Text(text="Сумма", fontSize = 20.sp,fontFamily= spProDisplayRegular, fontWeight = FontWeight.Bold)
                     Spacer(modifier=Modifier.weight(1f))
-                    Text(text="$priceCount ₽", fontSize = 20.sp, fontWeight = FontWeight.Bold)
+                    Text(text="$priceCount ₽", fontSize = 20.sp,fontFamily= spProDisplayRegular, fontWeight = FontWeight.Bold)
                 }
                 Spacer(modifier=Modifier.height(10.dp))
             }
@@ -116,12 +117,4 @@ fun countAllPrice(cardExtended: List<CardExtended>): Int{
         finalPrice+= (card.quantity * card.baseCard.price)
     }
     return finalPrice
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    ProffMatuleTheme {
-        BasketScreen(rememberNavController())
-    }
 }

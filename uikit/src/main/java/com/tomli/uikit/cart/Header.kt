@@ -16,6 +16,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.tomli.uikit.R
+import com.tomli.uikit.theme.spProDisplayRegular
 
 @Composable
 fun Header(modifier: Modifier, onBackClick:()->Unit, onDeleteClick:()->Unit){
@@ -25,6 +26,6 @@ fun Header(modifier: Modifier, onBackClick:()->Unit, onDeleteClick:()->Unit){
             Spacer(modifier = Modifier.weight(1f))
             Image(painter= painterResource(R.drawable.delete_button), contentDescription = null, modifier = Modifier.size(20.dp).clickable { onDeleteClick() })
         }
-        Text(text="Корзина", fontSize = 24.sp, fontWeight = FontWeight.Bold, modifier = Modifier.padding(top=15.dp))
+        Text(text="Корзина", fontSize = 24.sp, fontWeight = FontWeight(700), modifier = Modifier.padding(top=15.dp), fontFamily = spProDisplayRegular)
     }
 }

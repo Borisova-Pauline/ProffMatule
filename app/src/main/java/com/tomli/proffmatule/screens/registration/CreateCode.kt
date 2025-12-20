@@ -35,15 +35,19 @@ import com.tomli.proffmatule.R
 import com.tomli.proffmatule.components.DotCode
 import com.tomli.proffmatule.components.NumberInCircle
 import com.tomli.proffmatule.ui.theme.Caption
+import com.tomli.uikit.theme.spProDisplayRegular
 
 @Composable
 fun CreateCode(navController: NavController) {
     val scrollable = rememberScrollState()
     Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-        Box(modifier = Modifier
-            .padding(innerPadding)
-            .background(Color.White)
-            .fillMaxSize().verticalScroll(scrollable)) {
+        Box(
+            modifier = Modifier
+                .padding(innerPadding)
+                .background(Color.White)
+                .fillMaxSize()
+                .verticalScroll(scrollable)
+        ) {
             val code = remember { mutableStateOf("") }
             Column(
                 modifier = Modifier
@@ -54,6 +58,7 @@ fun CreateCode(navController: NavController) {
                 Text(
                     text = "Создайте пароль",
                     fontSize = 24.sp,
+                    fontFamily = spProDisplayRegular,
                     textAlign = TextAlign.Center,
                     fontWeight = FontWeight.Bold,
                     modifier = Modifier.fillMaxWidth()
@@ -62,6 +67,7 @@ fun CreateCode(navController: NavController) {
                 Text(
                     text = "Для защиты ваших персональных данных",
                     fontSize = 15.sp,
+                    fontFamily = spProDisplayRegular,
                     textAlign = TextAlign.Center,
                     color = Caption,
                     modifier = Modifier.fillMaxWidth()

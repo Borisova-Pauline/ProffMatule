@@ -18,12 +18,15 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.tomli.uikit.Accent
 import com.tomli.uikit.InputBG
 import com.tomli.uikit.InputIcon
 import com.tomli.uikit.InputStroke
 import com.tomli.uikit.R
+import com.tomli.uikit.theme.robotoFlexFont
 
 @Composable
 fun InputDropDown(
@@ -45,8 +48,8 @@ fun InputDropDown(
                         .padding(10.dp)
                         .size(10.dp)
                         .clickable { drop.value = !drop.value })
-            },
-            placeholder = { Text(text = textPlaceHolder, color = InputIcon) },
+            }, textStyle = TextStyle(fontFamily = robotoFlexFont, fontSize = 16.sp),
+            placeholder = { Text(text = textPlaceHolder,fontFamily = robotoFlexFont, color = InputIcon) },
             colors = OutlinedTextFieldDefaults.colors(
                 focusedBorderColor = Accent, unfocusedBorderColor = InputStroke,
                 cursorColor = Accent,

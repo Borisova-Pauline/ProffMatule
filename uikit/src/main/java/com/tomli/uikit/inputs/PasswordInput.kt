@@ -15,12 +15,15 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.tomli.uikit.Accent
 import com.tomli.uikit.InputBG
 import com.tomli.uikit.InputStroke
+import com.tomli.uikit.theme.robotoFlexFont
 
 @Composable
 fun PasswordInput(
@@ -44,8 +47,8 @@ fun PasswordInput(
                     .padding(15.dp)
                     .size(20.dp)
                     .clickable { hidePassword.value = !hidePassword.value })
-        },
-        placeholder = { Text(text = textPlaceHolder, color = Color(0xffabacb1)) },
+        }, textStyle = TextStyle(fontFamily = robotoFlexFont, fontSize = 16.sp),
+        placeholder = { Text(text = textPlaceHolder,fontFamily = robotoFlexFont, color = Color(0xffabacb1)) },
         colors = OutlinedTextFieldDefaults.colors(
             focusedBorderColor = Accent, unfocusedBorderColor = InputStroke,
             cursorColor = Accent,

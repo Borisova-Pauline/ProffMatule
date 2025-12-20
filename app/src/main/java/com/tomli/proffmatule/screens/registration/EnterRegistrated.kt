@@ -38,6 +38,9 @@ import com.tomli.proffmatule.ui.theme.Description
 import com.tomli.uikit.buttons.ButtonEnterWith
 import com.tomli.uikit.inputs.PasswordInput
 import com.tomli.uikit.inputs.SimpleInput
+import com.tomli.uikit.theme.robotoFlexFont
+import com.tomli.uikit.theme.robotoFont
+import com.tomli.uikit.theme.spProDisplayRegular
 
 @Composable
 fun EnterRegistrated(navController: NavController) {
@@ -46,10 +49,13 @@ fun EnterRegistrated(navController: NavController) {
     val password = remember { mutableStateOf("") }
     val scrollable = rememberScrollState()
     Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-        Column(modifier = Modifier
-            .padding(innerPadding)
-            .background(Color.White)
-            .fillMaxSize().verticalScroll(scrollable)) {
+        Column(
+            modifier = Modifier
+                .padding(innerPadding)
+                .background(Color.White)
+                .fillMaxSize()
+                .verticalScroll(scrollable)
+        ) {
             Column(
                 modifier = Modifier
                     .padding(horizontal = 20.dp)
@@ -63,19 +69,38 @@ fun EnterRegistrated(navController: NavController) {
                             .padding(end = 16.dp)
                             .size(32.dp)
                     )
-                    Text(text = "Добро пожаловать!", fontSize = 24.sp, fontWeight = FontWeight.Bold)
+                    Text(
+                        text = "Добро пожаловать!",
+                        fontFamily = spProDisplayRegular,
+                        fontSize = 24.sp,
+                        fontWeight = FontWeight.Bold
+                    )
                 }
-                Text(text = "Войдите, чтобы пользоваться функциями приложения", fontSize = 15.sp)
+                Text(
+                    text = "Войдите, чтобы пользоваться функциями приложения",
+                    fontFamily = spProDisplayRegular,
+                    fontSize = 15.sp
+                )
             }
             Spacer(Modifier.height(60.dp))
             Column(
                 modifier = Modifier
                     .padding(horizontal = 20.dp)
             ) {
-                Text(text = "Вход по E-mail", color = Description, fontSize = 14.sp)
+                Text(
+                    text = "Вход по E-mail",
+                    color = Description,
+                    fontSize = 14.sp,
+                    fontFamily = spProDisplayRegular
+                )
                 SimpleInput(email.value, { newText -> email.value = newText }, "example@mail.com")
                 Spacer(modifier = Modifier.height(15.dp))
-                Text(text = "Пароль", color = Description, fontSize = 14.sp)
+                Text(
+                    text = "Пароль",
+                    color = Description,
+                    fontFamily = spProDisplayRegular,
+                    fontSize = 14.sp
+                )
                 PasswordInput(
                     password.value,
                     { newText -> password.value = newText },
@@ -94,24 +119,26 @@ fun EnterRegistrated(navController: NavController) {
                             .fillMaxWidth()
                     )
                 } else {
-                    BlueButton("Далее", {
-                        if (isThisOnEmail(email.value)) {
-                            Toast.makeText(context, "Вход", Toast.LENGTH_LONG).show()
-                        } else {
-                            Toast.makeText(
-                                context,
-                                "Проверьте правильность почты",
-                                Toast.LENGTH_LONG
-                            ).show()
-                        }
-                    }, Accent, modifier = Modifier
-                        .height(56.dp)
-                        .fillMaxWidth())
+                    BlueButton(
+                        "Далее", {
+                            if (isThisOnEmail(email.value)) {
+                                Toast.makeText(context, "Вход", Toast.LENGTH_LONG).show()
+                            } else {
+                                Toast.makeText(
+                                    context,
+                                    "Проверьте правильность почты",
+                                    Toast.LENGTH_LONG
+                                ).show()
+                            }
+                        }, Accent, modifier = Modifier
+                            .height(56.dp)
+                            .fillMaxWidth()
+                    )
                 }
                 Spacer(modifier = Modifier.height(15.dp))
                 Text(text = "Зарегистрироваться",
                     fontSize = 15.sp,
-                    color = Accent,
+                    color = Accent, fontFamily = robotoFont,
                     textAlign = TextAlign.Center,
                     modifier = Modifier
                         .fillMaxWidth()
@@ -126,7 +153,7 @@ fun EnterRegistrated(navController: NavController) {
             ) {
                 Text(
                     text = "Или войдите с помощью",
-                    fontSize = 15.sp,
+                    fontSize = 15.sp, fontFamily = spProDisplayRegular,
                     color = Caption,
                     textAlign = TextAlign.Center,
                     modifier = Modifier.fillMaxWidth()

@@ -4,6 +4,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.LocalTextStyle
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
@@ -14,6 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.tomli.uikit.Accent
@@ -21,6 +23,7 @@ import com.tomli.uikit.Caption
 import com.tomli.uikit.InputBG
 import com.tomli.uikit.InputStroke
 import com.tomli.uikit.R
+import com.tomli.uikit.theme.robotoFlexFont
 
 @Composable
 fun Search(text: String, onValChange: (newText: String) -> Unit, modifier: Modifier) {
@@ -30,14 +33,14 @@ fun Search(text: String, onValChange: (newText: String) -> Unit, modifier: Modif
         value = text,
         onValueChange = onValChange,
         modifier = modifier.onFocusChanged { focusState -> isFocused.value = focusState.isFocused },
-        placeholder = { Text(text = "Искать  описания", color = Caption, fontSize = 16.sp) },
+        placeholder = { Text(text = "Искать  описания", fontFamily= robotoFlexFont, color = Caption, fontSize = 16.sp) },
         leadingIcon = {
             Image(
                 painter = painterResource(R.drawable.search),
                 contentDescription = null,
                 modifier = Modifier.size(20.dp)
             )
-        },
+        }, textStyle = TextStyle(fontFamily = robotoFlexFont, fontSize = 16.sp),
         colors = OutlinedTextFieldDefaults.colors(
             focusedBorderColor = Accent, unfocusedBorderColor = InputStroke,
             cursorColor = Accent,

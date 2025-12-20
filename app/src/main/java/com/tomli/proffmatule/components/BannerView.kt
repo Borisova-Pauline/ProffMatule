@@ -20,20 +20,48 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.tomli.proffmatule.screens.main.BannerData
+import com.tomli.uikit.theme.spProDisplayRegular
 
 @Composable
-fun BannerView(banner: BannerData){
-    Row(modifier= Modifier.height(152.dp).width(270.dp).background(brush = Brush.linearGradient(colors=banner.gradient),shape = RoundedCornerShape(12.dp))){
-        Column(Modifier.padding(16.dp).width(120.dp)){
-            Text(text=banner.name, color= Color.White, fontSize = 20.sp, fontWeight = FontWeight.Bold)
-            Spacer(modifier= Modifier.weight(1f))
-            Text(text="${banner.price} ₽", color= Color.White, fontSize = 20.sp, fontWeight = FontWeight.Bold)
+fun BannerView(banner: BannerData) {
+    Row(
+        modifier = Modifier
+            .height(152.dp)
+            .width(270.dp)
+            .background(
+                brush = Brush.linearGradient(colors = banner.gradient),
+                shape = RoundedCornerShape(12.dp)
+            )
+    ) {
+        Column(Modifier
+            .padding(16.dp)
+            .width(120.dp)) {
+            Text(
+                text = banner.name,
+                fontFamily = spProDisplayRegular,
+                color = Color.White,
+                fontSize = 20.sp,
+                fontWeight = FontWeight.Bold
+            )
+            Spacer(modifier = Modifier.weight(1f))
+            Text(
+                text = "${banner.price} ₽",
+                fontFamily = spProDisplayRegular,
+                color = Color.White,
+                fontSize = 20.sp,
+                fontWeight = FontWeight.Bold
+            )
         }
-        when(banner.picture){
-            is Int->{
-                Image(painter = painterResource(banner.picture), contentScale = ContentScale.Fit, contentDescription = null)
+        when (banner.picture) {
+            is Int -> {
+                Image(
+                    painter = painterResource(banner.picture),
+                    contentScale = ContentScale.Fit,
+                    contentDescription = null
+                )
             }
-            else->{
+
+            else -> {
 
             }
         }

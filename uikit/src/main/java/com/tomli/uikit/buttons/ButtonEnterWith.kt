@@ -15,9 +15,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.tomli.uikit.InputStroke
+import com.tomli.uikit.theme.robotoFlexFont
 
 @Composable
 fun ButtonEnterWith(modifier: Modifier, onClick: () -> Unit, icon: Int, text: String){
@@ -29,7 +31,7 @@ fun ButtonEnterWith(modifier: Modifier, onClick: () -> Unit, icon: Int, text: St
         Row(verticalAlignment = Alignment.CenterVertically){
             Image(painter= painterResource(icon), contentDescription = null, modifier= Modifier.size(32.dp))
             Spacer(modifier= Modifier.width(16.dp))
-            Text(text=text, fontSize = 17.sp, color = Color.Black)
+            Text(text=text, fontSize = 17.sp, color = Color.Black, fontFamily = robotoFlexFont, fontWeight = FontWeight(500))
         }
     }
 }

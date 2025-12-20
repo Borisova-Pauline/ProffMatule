@@ -15,6 +15,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.tomli.uikit.theme.robotoFlexFont
 
 @Composable
 fun ButtonNavigationApp(
@@ -43,7 +44,7 @@ fun ButtonNavigationApp(
             )
             Text(
                 text = text, color = if (screenVal == needScreenValue)
-                    Color(0xff1A6FEE) else Color(0xffB8C1CC), fontSize = 12.sp
+                    Color(0xff1A6FEE) else Color(0xffB8C1CC), fontFamily= robotoFlexFont, fontSize = 12.sp
             )
         }
     }

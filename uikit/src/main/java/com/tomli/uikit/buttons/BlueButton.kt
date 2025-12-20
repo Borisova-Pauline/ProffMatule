@@ -7,14 +7,16 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.tomli.uikit.theme.robotoFlexFont
 
 @Composable
 fun BlueButton(text: String, onClick:()->Unit, colorButton: Color, modifier: Modifier){
     Button(onClick = {onClick()},
         colors= ButtonDefaults.buttonColors(containerColor = colorButton, contentColor = Color.White),
         shape = RoundedCornerShape(10.dp), modifier=modifier){
-        Text(text=text, fontSize = 17.sp)
+        Text(text=text, fontSize = 17.sp, fontFamily = robotoFlexFont, fontWeight = FontWeight(600))
     }
 }

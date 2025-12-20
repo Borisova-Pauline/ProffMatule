@@ -1,6 +1,8 @@
 package com.tomli.proffmatule.screens.registration
 
+import android.os.Build
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -28,9 +30,12 @@ import com.tomli.uikit.buttons.BlueButton
 import com.tomli.proffmatule.ui.theme.Accent
 import com.tomli.proffmatule.ui.theme.AccentInactive
 import com.tomli.proffmatule.ui.theme.Caption
+import com.tomli.uikit.inputs.DateInput
 import com.tomli.uikit.inputs.InputDropDown
 import com.tomli.uikit.inputs.SimpleInput
+import com.tomli.uikit.theme.spProDisplayRegular
 
+@RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun CreatingProfile(navController: NavController) {
     val context = LocalContext.current
@@ -47,7 +52,7 @@ fun CreatingProfile(navController: NavController) {
             .background(Color.White)
             .fillMaxSize().verticalScroll(scrollable)) {
             Text(
-                text = "Создание Профиля", fontSize = 24.sp, fontWeight = FontWeight.Bold,
+                text = "Создание Профиля",fontFamily = spProDisplayRegular, fontSize = 24.sp, fontWeight = FontWeight.Bold,
                 modifier = Modifier
                     .padding(horizontal = 20.dp)
                     .padding(top = 74.dp - innerPadding.calculateTopPadding())
@@ -59,13 +64,13 @@ fun CreatingProfile(navController: NavController) {
             ) {
                 Text(
                     text = "Без профиля вы не сможете создавать проекты.",
-                    fontSize = 14.sp,
+                    fontSize = 14.sp,fontFamily = spProDisplayRegular,
                     color = Caption
                 )
                 Spacer(modifier = Modifier.height(7.dp))
                 Text(
                     text = "В профиле будут храниться результаты проектов и ваши описания.",
-                    fontSize = 14.sp,
+                    fontSize = 14.sp,fontFamily = spProDisplayRegular,
                     color = Caption
                 )
             }
@@ -80,7 +85,7 @@ fun CreatingProfile(navController: NavController) {
                 Spacer(modifier = Modifier.height(20.dp))
                 SimpleInput(lastName.value, { newText -> lastName.value = newText }, "Фамилия")
                 Spacer(modifier = Modifier.height(20.dp))
-                SimpleInput(
+                DateInput(
                     birthDay.value,
                     { newText -> birthDay.value = newText },
                     "День рождения"
@@ -113,7 +118,15 @@ fun CreatingProfile(navController: NavController) {
                 } else {
                     BlueButton("Далее", {
                         if (isThisOnEmail(email.value)) {
-                            navController.navigate("CreatePassword")
+                            if(isDateRealDate(birthDay.value)){
+                                navController.navigate("CreatePassword")
+                            }else{
+                                Toast.makeText(
+                                    context,
+                                    "Дата должна быть написана \"--.--.----\"",
+                                    Toast.LENGTH_LONG
+                                ).show()
+                            }
                         } else {
                             Toast.makeText(
                                 context,
