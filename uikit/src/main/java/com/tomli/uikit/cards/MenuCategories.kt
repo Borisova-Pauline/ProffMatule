@@ -5,5 +5,5 @@ enum class MenuCategories(val screenName: String) {
     Woman("Женщинам"),
     Man("Мужчинам"),
     Kids("Детям"),
-    Accessories("Аксессуары")
+    Accessories("Аксессуары");
 }

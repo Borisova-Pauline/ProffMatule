@@ -5,6 +5,10 @@ import androidx.annotation.RequiresApi
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import com.tomli.proffmatule.ui.theme.ProffMatuleTheme
+import com.tomli.uikit.cards.MenuCategories
+import com.tomli.uikit.cards.MenuCategories.All
+import com.tomli.uikit.cards.MenuCategories.entries
+import com.tomli.uikit.project.ProjectType
 import java.time.Year
 
 
@@ -27,14 +31,20 @@ fun isThisOnEmail(word: String): Boolean {
 }
 
 @RequiresApi(Build.VERSION_CODES.O)
-fun isDateRealDate(date: String): Boolean{
+fun isDateRealDate(date: String, ignoreYear: Boolean = false): Boolean{
     val listNums = date.split(".")
     if(listNums.size<3){
         return false
     }
     try{
-        if(listNums[0].toInt()<=31 && listNums[1].toInt()<=12 && listNums[2].toInt()<= Year.now().value){
-            return true
+        if(listNums[0].toInt()<=31 && listNums[1].toInt()<=12){
+            if(!ignoreYear && listNums[2].toInt()<= Year.now().value){
+                return true
+            }else if(ignoreYear){
+                return true
+            }else{
+                return false
+            }
         }else{
             return false
         }
@@ -42,4 +52,26 @@ fun isDateRealDate(date: String): Boolean{
         e.printStackTrace()
         return false
     }
+}
+
+inline fun <reified T: Enum<T>> enumContains(compareVal: String, ignoreCase: Boolean = true): Boolean{
+    return enumValues<T>().any{ it.name.equals(compareVal, ignoreCase=ignoreCase)}
+}
+
+fun containsScreenName(value: String): Boolean{
+    for(item in MenuCategories.entries){
+        if(item.screenName==value) {
+            return true
+        }
+    }
+    return false
+}
+
+fun getCategory(value: String): MenuCategories{
+    for(item in MenuCategories.entries){
+        if(item.screenName==value) {
+            return item
+        }
+    }
+    return All
 }

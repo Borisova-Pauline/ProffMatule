@@ -4,6 +4,7 @@ import android.net.Uri
 import com.tomli.uikit.cards.MenuCategories
 
 data class ProjectInfo (
+    val id: Int,
     val type: ProjectType,
     val name: String,
     val dateStart: String,
