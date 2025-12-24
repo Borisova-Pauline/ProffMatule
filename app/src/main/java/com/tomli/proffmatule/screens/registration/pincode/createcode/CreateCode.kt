@@ -1,4 +1,4 @@
-package com.tomli.proffmatule.screens.registration
+package com.tomli.proffmatule.screens.registration.pincode.createcode
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -32,8 +32,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.tomli.proffmatule.R
-import com.tomli.proffmatule.components.DotCode
-import com.tomli.proffmatule.components.NumberInCircle
+import com.tomli.proffmatule.components.pincode.dotcode.DotCode
+import com.tomli.proffmatule.components.pincode.numberincircle.NumberInCircle
+import com.tomli.proffmatule.screens.registration.CodeAdder
 import com.tomli.proffmatule.ui.theme.Caption
 import com.tomli.uikit.theme.spProDisplayRegular
 

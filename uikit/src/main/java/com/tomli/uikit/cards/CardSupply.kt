@@ -1,5 +1,7 @@
 package com.tomli.uikit.cards
 
+import com.tomli.uikit.cards.category.MenuCategories
+
 data class CardSupply(
     val id: Int,
     val name: String,

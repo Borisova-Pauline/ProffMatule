@@ -1,12 +1,12 @@
-package com.tomli.proffmatule.screens.main
+package com.tomli.proffmatule.screens.main.mainscreen
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Scaffold
@@ -20,13 +20,18 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.tomli.proffmatule.R
+import com.tomli.proffmatule.screens.main.tabbarpages.catalogscreen.CatalogPage
+import com.tomli.proffmatule.screens.main.tabbarpages.mainpage.MainPage
+import com.tomli.proffmatule.screens.main.tabbarpages.profilescreen.ProfileScreen
+import com.tomli.proffmatule.screens.main.tabbarpages.projectscreen.ProjectPage
 import com.tomli.uikit.search.Search
 import com.tomli.uikit.tabbar.AppScreens
 import com.tomli.uikit.tabbar.Tabbar
 
+@RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun MainScreen(navController: NavController){
-    val screen = remember{ mutableStateOf(AppScreens.Projects)}
+    val screen = remember{ mutableStateOf(AppScreens.Main)}
     val searchValue = remember { mutableStateOf("") }
     Scaffold(modifier=Modifier.fillMaxSize()) { innerPadding ->
         Column(modifier = Modifier

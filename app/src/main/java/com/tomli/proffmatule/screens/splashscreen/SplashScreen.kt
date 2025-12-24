@@ -1,4 +1,4 @@
-package com.tomli.proffmatule.screens
+package com.tomli.proffmatule.screens.splashscreen
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box

@@ -1,4 +1,4 @@
-package com.tomli.uikit.cards
+package com.tomli.uikit.cards.category
 
 enum class MenuCategories(val screenName: String) {
     All("Все"),

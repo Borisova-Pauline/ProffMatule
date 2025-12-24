@@ -1,4 +1,4 @@
-package com.tomli.proffmatule.screens.registration
+package com.tomli.proffmatule.screens.registration.createuser.createpassword
 
 import android.widget.Toast
 import androidx.compose.foundation.Image
@@ -28,6 +28,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.tomli.proffmatule.R
+import com.tomli.proffmatule.screens.registration.isThisOnRegexPassword
 import com.tomli.uikit.buttons.BlueButton
 import com.tomli.proffmatule.ui.theme.Accent
 import com.tomli.proffmatule.ui.theme.AccentInactive

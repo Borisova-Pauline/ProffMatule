@@ -1,4 +1,4 @@
-package com.tomli.proffmatule.screens.main
+package com.tomli.proffmatule.screens.main.basketscreen
 
 import android.widget.Toast
 import androidx.compose.foundation.background
@@ -16,26 +16,26 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import androidx.navigation.compose.rememberNavController
-import com.tomli.proffmatule.ui.theme.ProffMatuleTheme
 import com.tomli.uikit.Accent
 import com.tomli.uikit.buttons.BlueButton
 import com.tomli.uikit.cards.CardSupply
-import com.tomli.uikit.cards.MenuCategories
+import com.tomli.uikit.cards.category.MenuCategories
 import com.tomli.uikit.cart.CardExtended
 import com.tomli.uikit.cart.CartCard
 import com.tomli.uikit.cart.Header
 import com.tomli.uikit.theme.spProDisplayRegular
+import kotlinx.coroutines.delay
 
 @Composable
 fun BasketScreen(navController: NavController){
@@ -75,6 +75,15 @@ fun BasketScreen(navController: NavController){
         )
     }
     val priceCount = countAllPrice(cards)
+    val isBasketClick = remember { mutableStateOf(false) }
+    if(isBasketClick.value){
+        LaunchedEffect(isBasketClick.value) {
+            delay(5000)
+            navController.navigate("mainScreen")
+            isBasketClick.value=false
+        }
+    }
+
     Scaffold(modifier= Modifier.fillMaxSize()) { innerPadding ->
         Column(
             modifier = Modifier
@@ -105,7 +114,8 @@ fun BasketScreen(navController: NavController){
             }
             Spacer(modifier=Modifier.weight(1f))
             BlueButton("Перейти к оформлению заказа", {
-                Toast.makeText(context, "Переход к оформлению заказа", Toast.LENGTH_LONG).show()
+                Toast.makeText(context, "Заказ успешно оформлен", Toast.LENGTH_LONG).show()
+                isBasketClick.value=true
             }, Accent, modifier = Modifier.fillMaxWidth().padding(bottom=10.dp).height(56.dp))
         }
     }

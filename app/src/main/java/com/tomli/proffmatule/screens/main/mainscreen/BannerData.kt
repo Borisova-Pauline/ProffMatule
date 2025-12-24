@@ -1,4 +1,4 @@
-package com.tomli.proffmatule.screens.main
+package com.tomli.proffmatule.screens.main.mainscreen
 
 import androidx.compose.ui.graphics.Color
 

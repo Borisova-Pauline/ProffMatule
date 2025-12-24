@@ -1,4 +1,4 @@
-package com.tomli.proffmatule.screens.main
+package com.tomli.proffmatule.screens.main.tabbarpages.profilescreen
 
 import android.widget.Toast
 import androidx.compose.foundation.Image

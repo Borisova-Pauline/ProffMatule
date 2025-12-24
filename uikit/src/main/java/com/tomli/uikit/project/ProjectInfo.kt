@@ -1,7 +1,7 @@
 package com.tomli.uikit.project
 
 import android.net.Uri
-import com.tomli.uikit.cards.MenuCategories
+import com.tomli.uikit.cards.category.MenuCategories
 
 data class ProjectInfo (
     val id: Int,

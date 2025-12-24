@@ -1,4 +1,4 @@
-package com.tomli.uikit.cards
+package com.tomli.uikit.cards.category
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable

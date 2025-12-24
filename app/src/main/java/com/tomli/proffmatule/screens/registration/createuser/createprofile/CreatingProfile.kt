@@ -1,4 +1,4 @@
-package com.tomli.proffmatule.screens.registration
+package com.tomli.proffmatule.screens.registration.createuser.createprofile
 
 import android.os.Build
 import android.widget.Toast
@@ -26,6 +26,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.tomli.proffmatule.screens.registration.isDateRealDate
+import com.tomli.proffmatule.screens.registration.isThisOnEmail
 import com.tomli.uikit.buttons.BlueButton
 import com.tomli.proffmatule.ui.theme.Accent
 import com.tomli.proffmatule.ui.theme.AccentInactive

@@ -2,13 +2,8 @@ package com.tomli.proffmatule.screens.registration
 
 import android.os.Build
 import androidx.annotation.RequiresApi
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.tooling.preview.Preview
-import com.tomli.proffmatule.ui.theme.ProffMatuleTheme
-import com.tomli.uikit.cards.MenuCategories
-import com.tomli.uikit.cards.MenuCategories.All
-import com.tomli.uikit.cards.MenuCategories.entries
-import com.tomli.uikit.project.ProjectType
+import com.tomli.uikit.cards.category.MenuCategories
+import com.tomli.uikit.cards.category.MenuCategories.All
 import java.time.Year
 
 
@@ -67,7 +62,7 @@ fun containsScreenName(value: String): Boolean{
     return false
 }
 
-fun getCategory(value: String): MenuCategories{
+fun getCategory(value: String): MenuCategories {
     for(item in MenuCategories.entries){
         if(item.screenName==value) {
             return item

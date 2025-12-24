@@ -1,4 +1,4 @@
-package com.tomli.proffmatule.screens.registration
+package com.tomli.proffmatule.screens.registration.pincode.entercode
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -27,15 +27,13 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import androidx.navigation.compose.rememberNavController
 import com.tomli.proffmatule.R
-import com.tomli.proffmatule.components.DotCode
-import com.tomli.proffmatule.components.NumberInCircle
-import com.tomli.proffmatule.ui.theme.ProffMatuleTheme
+import com.tomli.proffmatule.components.pincode.dotcode.DotCode
+import com.tomli.proffmatule.components.pincode.numberincircle.NumberInCircle
+import com.tomli.proffmatule.screens.registration.CodeAdder
 import com.tomli.uikit.theme.spProDisplayRegular
 
 @Composable

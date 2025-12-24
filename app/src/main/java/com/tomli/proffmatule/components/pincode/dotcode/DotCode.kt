@@ -1,4 +1,4 @@
-package com.tomli.proffmatule.components
+package com.tomli.proffmatule.components.pincode.dotcode
 
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.fillMaxHeight

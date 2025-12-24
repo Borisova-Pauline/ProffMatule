@@ -1,4 +1,4 @@
-package com.tomli.proffmatule.components
+package com.tomli.proffmatule.components.bannerview
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -19,7 +19,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.tomli.proffmatule.screens.main.BannerData
+import com.tomli.proffmatule.screens.main.mainscreen.BannerData
 import com.tomli.uikit.theme.spProDisplayRegular
 
 @Composable
